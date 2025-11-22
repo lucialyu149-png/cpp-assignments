@@ -1,0 +1,50 @@
+using namespace std;
+
+class Student {
+public:
+    string name;
+    int age;
+    
+    void showInfo() {
+        cout << "Name: " << name << ", Age: " << age << endl;
+    }
+};
+
+class FileHandler {
+public:
+    void createFile() {
+        ofstream file("data.txt");
+        file << "Hello, this is file content!\n";
+        file << "Student Data Example\n";
+        file.close();
+        cout << "File created successfully.\n";
+    }
+    
+    void readFile() {
+        string line;
+        ifstream file("data.txt");
+        while (getline(file, line)) {
+            cout << line << endl;
+        }
+        file.close();
+    }
+};
+
+int main() {
+    Student s1;
+    s1.name = "Alice";
+    s1.age = 20;
+    s1.showInfo();
+    
+    Student s2;
+    s2.name = "Bob"; 
+    s2.age = 22;
+    s2.showInfo();
+    
+    FileHandler fh;
+    fh.createFile();
+    
+    cout << "\nReading file content:\n";
+    fh.readFile();
+    
+    return 0
